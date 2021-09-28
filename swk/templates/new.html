@@ -12,7 +12,12 @@
     <meta content="" name="description">
     <meta content="" name="keywords">
 
-
+<style>
+    /* a.nav-link{
+        margin-left: 20%;
+    }  */
+    
+</style>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Lato:400,300,700,900" rel="stylesheet">
 
@@ -27,6 +32,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script> -->
     <!-- Template Main CSS File -->
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="{% static 'css/front.css' %}" rel="stylesheet">
     <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
     <script src="{% static 'assets/js/popper.js' %}"></script>
     <!-- For close button on messages -->
@@ -50,11 +57,8 @@ gtag('config', 'UA-197940159-2');
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-    {% block extra_css %} 
-    <!-- .logo-container {
-        display: flex;
-        justify-content: space-between;
-      } -->
+    <!-- {% block extra_css %} 
+   
     .navbar .navbar-collapse {
         text-align: center;
         width:20%;
@@ -64,25 +68,30 @@ gtag('config', 'UA-197940159-2');
         justify-content: center;
     }
      
-    {% endblock %}
+    {% endblock %} -->
 
 
 </head>
 
 <body>
     
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark flex-column align-items-stretch">
-        
-        <div class=" d-flex align-items-center" style="justify-content: space-evenly;">
-            <!-- <img class="header-left" src="{% static 'images/IDFC_FIRST_Bank_logo.jpg' %}" style="height: 60px; width: 120px;overflow: hidden;"> -->
-            <img class="header-left" src="{% static 'images/IDFC-FIRST-Bank-logo-123-X-61.png' %}" style="height: 60px; width: 120px;overflow: hidden;">
-            <img class="header-center" src="{% static 'images/sms_logo.jpg' %}" style="height: 60px; width: 80px;overflow: hidden;">
-            <img class="header-right" src="{% static 'images/mcgm_logo.jpg' %}" style="height: 60px; width: 60px;overflow: hidden;">              
-        </div>
+  
+        <div  id="brand_container" class="flex flex-wrap p-1">
+          
+            <div class=" d-flex p-2 w-full h-full" style="justify-content:space-between;">
+                <!-- <img class="header-left" src="{% static 'images/IDFC_FIRST_Bank_logo.jpg' %}" style="height: 60px; width: 120px;overflow: hidden;"> -->
+                <img class="header-left  idfc" src="{% static 'images/IDFC-FIRST-Bank-logo-123-X-61.png' %}">
+                <img class="header-center sms" src="{% static 'images/sms_logo.jpg' %}">
+                <img class="header-right mcgm" src="{% static 'images/mcgm_logo.jpg' %}">              
+            </div>
+         
+</div>
+       
         <div>
             <!-- {{ Visitor_count }} -->
         </div>
-        <nav class ="nav-menu d-none d-lg-block">
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark flex-column justify-content-between">
+        <nav class ="nav-menu d-none d-lg-block justify-content-center">
             <ul class="navbar-nav">
                 <li class="nav-item active">
                 <a href="{% url 'homepage' %}" class="nav-link text-white" >{% trans "Home" %}</a>
@@ -190,12 +199,14 @@ gtag('config', 'UA-197940159-2');
                         <a href="{% url 'login' %}" class="nav-link text-white">{% trans "Login" %}</a>
                     </li>
                 {% endif %}
-
+                <li>
+                    <a class="nav-link text-white" ><h5 class="nav-item text-white  m-1 h-full" style ="float: right" > &nbsp;&nbsp; {% trans "Visitors Count" %} : {{ Visitor_count }} </h5></a>
+            </li>
             
-            <form action="{% url 'set_language' %}" method="post">
+            <form action="{% url 'set_language' %}" class="m-1 h-full" method="post">
                 {% csrf_token %}
-                <input name="next" type="hidden" value="{{ redirect_to }}" />            
-                <select name="language" style="width: auto;" id="">
+                <input name="next" type="hidden"value="{{ redirect_to }}" />            
+                <select name="language" style="width: auto;"  class=" bg-light"  id="">
                   {% get_current_language as LANGUAGE_CODE %}
                   {% get_available_languages as LANGUAGES %}
                   {% get_language_info_list for LANGUAGES as languages %}
@@ -209,7 +220,6 @@ gtag('config', 'UA-197940159-2');
             <!-- hitwebcounter Code START -->
 <!-- <a href="https://www.hitwebcounter.com" target="_blank">
     <img src="https://hitwebcounter.com/counter/counter.php?page=7818435&style=0001&nbdigits=5&type=ip&initCount=0" title="Free Counter" Alt="web counter"   border="0" /></a>    -->
-    <h5 class="nav-item text-white" style ="float: right;line-height: 2.0;"> &nbsp;&nbsp; {% trans "Visitors Count" %} : {{ Visitor_count }} </h5>
         </ul>
         
         </nav>
@@ -236,17 +246,22 @@ gtag('config', 'UA-197940159-2');
     
    <!-- <footer class="text-center text-white " style="background-color: #21081a;bottom: 0px;"> -->
        <!-- <footer class="text-center text-white fixed-bottom" style="background-color: #21081a;bottom: 0px;"> -->
-        <footer class="text-center text-white" style="background-color: #21081a;bottom: 0px;">
+        <footer class="text-center text-white" style="background-color: #21081a; bottom: 0px;">
        
   <!-- Copyright -->
     <!-- <div class="text-justify p-3" style="background-color: rgba(0, 0, 0, 0.2);"raj> -->
-    <div class="p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-        <img class="logo" style="margin-top: 5px; height: 80px; width: 120px;" src="{% static 'images/Logo-Unit_SWK.jpg' %}" alt="My image">
-        <a class="text-white"><p>Developed by Respirer Living Sciences Pvt. Ltd using FOSS project Communitygis.net supported by CTARA IITB.</p>
-            <p>Software Developer  Team: Monika Shah ( Respirer Living Science Ltd ), Shweta Panwar from CTARA ,  Animesh Nautiyal from CTARA <br>under guidance of Prof. Jitendra Shah (CTARA).</p>
+    <div class="flex flex-wrap  h-full" style="background-color: rgba(0, 0, 0, 0.2);">
+        <div class=" flex w-1/5 h-3/4 my-auto mx-auto">
+            <img class="logo h-full" src="{% static 'images/Logo-Unit_SWK.jpg' %}" alt="My image">
+
+        </div>
+        <div class="flex w-4/5 h-3/4 my-auto mx-auto">
+        <a class="text-white h-full  mx-auto"><p class="text-xs">Developed by Respirer Living Sciences Pvt. Ltd using FOSS project Communitygis.net supported by CTARA IITB. <br>
+            Software Developer Team:Monika Shah(Respirer Living Science Ltd), Shweta Panwar from CTARA, Animesh Nautiyal from CTARA under guidance of Prof. Jitendra Shah(CTARA).</p>
         
         
         </a>
+    </div>
     </div>
     <!-- Copyright -->
     </footer>
