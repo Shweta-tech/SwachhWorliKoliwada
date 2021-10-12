@@ -19,7 +19,7 @@ EMAIL_HOST_PASSWORD =Swk.communitygis2321
 DEFAULT_FROM_EMAIL =  swk.communitygis@gmail.com
 
 VIEW_ID = 243710477
-KEY_FILE_LOCATION = /home/ubuntu/myenv/SWKV2/swk/swk-new.json
+KEY_FILE_LOCATION = /home/user/SWK/swk/swk-new.json
 
 TYPE= service_account,
 PROJECT_ID= swk-website,

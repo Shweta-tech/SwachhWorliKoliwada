@@ -84,10 +84,7 @@ footer{
 		width: 7% !important;
 		height: 100%;
 	   }
-	   #brand_container{
-		/* height: 10%; */
-		margin-right: 10%;
-	}
+	   
 	a.nav-link{
         margin-left: 20%;
 		font-size: larger;
