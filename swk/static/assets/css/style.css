@@ -455,11 +455,6 @@ h3,
     #hero {
         background-attachment: fixed;
     }
-    /* img.idfc, img.sms, img.mcgm{
-        margin-top: 5%;
-        width: 30% !important;
-        height: 60%;
-       } */
 }
 
 @media (max-width: 768px) {
